@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    function computerPlay() {
+        let options = ['rock', 'paper', 'scissors'];
+        let computerResults = options[Math.floor(Math.random()*options.length)];
+        return computerResults;
+    }
+    function playRound(playerSelection, computerSelection) {
+        if(playerSelection.toLowerCase() === 'rock' && computerSelection === 'scissors' || 
+                playerSelection.toLowerCase() === 'paper' && computerSelection === 'rock' 
+                        || playerSelection.toLowerCase() === 'scissors' && computerSelection === 'paper') {
+            return 'Win';
+        } else if(playerSelection.toLowerCase() === computerSelection) {
+            return "It's a tie!";
+        } else {
+            return 'Lose';
+        }
+    }
+    function game() {
+        let playerTotal = 0;
+        let cpuTotal = 0;
+        for(let i = 0; i < 5; i ++) {
+            const playerSelection = prompt("Rock, Paper, or Scissors?");
+            const computerSelection = computerPlay();
+            let result = playRound(playerSelection, computerSelection);
+               if(result === 'Win') {
+                   playerTotal ++;
+               } else if(result === 'Lose'){
+                   cpuTotal++;
+               }
+               console.log(result);      
+        }
+        if(playerTotal > cpuTotal) {
+            console.log('You are a Winner! :D');
+        } else if (playerTotal < cpuTotal) {
+            console.log('You are a Loser! >:D');
+        }
+    }
+    game() 
+  </script>
+</body>
+</html>
